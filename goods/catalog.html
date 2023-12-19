@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../deps/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../deps/css/my_css.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../deps/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../deps/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../deps/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../deps/favicon/site.webmanifest">
+    <title>Каталог</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+            <div class="container">
+                <a class="navbar-brand" href="../index.html">Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Информация
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item  text-white" href="#">Доставка и оплата</a></li>
+                                <li><a class="dropdown-item  text-white" href="#">Контактная информация</a></li>
+                                <li><a class="dropdown-item  text-white" href="#">Про нас</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  text-white" href="../carts/cart.html">Корзина</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  text-white" href="../users/login.html">Войти</a>
+                        </li>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Мой профиль
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item  text-white" href="../carts/cart.html">Корзина</a></li>
+                                <li><a class="dropdown-item  text-white" href="../users/profile.html">Личный кабинет</a>
+                                </li>
+                                <li><a class="dropdown-item  text-white" href="#">Админ панель</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item  text-white" href="#">Выйти</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success text-white" type="submit">Поиск</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div class="container">
+            <!-- Каталог и корзина с фиксированным расположением на странице -->
+            <div class="row mt-1 position-fixed z-3">
+                <!-- Каталог -->
+                <div class="dropdown mb-2">
+                    <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Каталог
+                        <img class="mx-1" src="../deps/icons/grid-fill.svg" alt="Catalog Icon" width="16"
+                            height="16">
+                    </button>
+                    <ul class="dropdown-menu bg-dark" data-bs-theme="dark">
+                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Все товары</a></li>
+                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Кухня</a></li>
+                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Спальня</a></li>
+                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Гостинная</a></li>
+                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Офис</a></li>
+                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Фурнитура</a></li>
+                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Декор</a></li>
+                    </ul>
+                </div>
+                <!-- Значек корзины, вызывает модальное окно -->
+                <div>
+                    <button type="button" class="btn btn-dark btn-secondary d-flex" id="modalButton" aria-expanded="false">
+                        <img class="mx-1" src="../deps/icons/basket2-fill.svg" alt="Catalog Icon" width="24"
+                            height="24">
+                        <span>0</span>
+                    </button>
+                </div>
+                <!-- Разметка модального окна корзины -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h3 class="text-center mb-4">Корзина</h3>
+                                <div class="container" id="cart-items-container">
+                                    <!-- Разметка корзины -->
+                                    <div class="card mb-3 text-bg-light shadow-lg">
+                                        <div class="card-header">
+                                            <h5 class="card-title">Товар</h5>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">
+                                                <div class="row text-center">
+                                                    <div class="col p-0">
+                                                        <div class="input-group">
+                                                            <span class="input-group-btn">
+                                                                <button type="button" class="btn btn-dark btn-sm decrement"
+                                                                    data-cart-id="" data-cart-change-url="">-</button>
+                                                            </span>
+                                                            <input type="text" class="form-control number" value="1"
+                                                                readonly>
+                                                            <span class="input-group-btn">
+                                                                <button type="button" class="btn btn-dark btn-sm increment"
+                                                                    data-cart-id="" data-cart-change-url="">+</button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col p-0">
+                                                        <p>x 100.00 = </p>
+                                                    </div>
+                                                    <div class="col p-0"><strong>100.00 $</strong></div>
+                                                    <div class="col p-0">
+                                                        <a href="#" class="remove-from-cart" data-cart-id="">
+                                                            <img class="mx-1" src="../deps/icons/trash3-fill.svg"
+                                                                alt="Catalog Icon" width="16" height="16">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card mb-3 shadow-lg">
+                                        <div class="card-footer">
+                                            <p class="float-left">Итого <strong>1</strong> товар(а) на сумму</p>
+                                            <h4 class="float-left"><strong>100.00 $</strong></h4>
+                                        </div>
+                                    </div>
+                                    <!-- Закончилась разметка корзины -->
+                                </div>
+                                <a class="btn btn-dark" href="../orders/create_order.html">
+                                    Оформить заказ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Закончилась разметка модального окна -->
+            </div>
+        </div>
+        <!-- Контент -->
+        <div class="container">
+            <div class="row mt-1">
+                <div class="col-lg-2">
+                    <!-- Пустой блок на усмотрение -->
+                </div>
+                <div class="col-lg-10">
+                    <!-- Контент на странице -->
+                    <div class="row">
+                        <!-- Форма фильтров -->
+                        <div class="dropdown mb-2">
+                            <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Фильтры
+                            </button>
+                    
+                            <form action="" method="get" class="dropdown-menu bg-dark" data-bs-theme="dark">
+                                <div class="form-check text-white mx-3">
+                                    <input class="form-check-input" type="checkbox" name="on_sale" id="flexCheckDefault" value="on">
+                                    <input type="hidden" name="q" value="request.GET.q">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Товары по акции
+                                    </label>
+                                </div>
+                                <p class="text-white mx-3 mt-3">Сортировать:</p>
+                                <div class="form-check text-white mx-3">
+                                    <input class="form-check-input" type="radio" name="order_by" id="flexRadioDefault1" value="default" checked>
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        По умолчанию
+                                    </label>
+                                </div>
+                                <div class="form-check text-white mx-3">
+                                    <input class="form-check-input" type="radio" name="order_by" id="flexRadioDefault2" value="price">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        От дешевых к дорогим
+                                    </label>
+                                </div>
+                                <div class="form-check text-white mx-3">
+                                    <input class="form-check-input" type="radio" name="order_by" id="flexRadioDefault3" value="-price">
+                                    <label class="form-check-label" for="flexRadioDefault3">
+                                        От дорогих к дешевым
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary mx-3 mt-3">Применить</button>
+                            </form>
+                        </div>
+                        <!-- Карта товара -->
+                        <div class="col-lg-4 col-md-6 p-4">
+                            <div class="card border-primary rounded custom-shadow">
+                                <img src="../deps/images/goods/set of tea table and three chairs.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="../goods/product.html">
+                                        <p class="card-title">Чайный столик и три стула</p>
+                                    </a>
+                                    <p class="card-text text-truncate">Комплект из трёх стульев и дизайнерский столик для гостинной комнаты.</p>
+                                    <p class="product_id">id: 02265</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p><s>100</s> $</p>
+                                        <p><strong>90.00 $</strong></p>
+                                        <span class="badge bg-warning text-dark">Скидка 10.00 %</span>
+                                        <!-- <p><strong>100.00 $</strong></p> -->
+                                        <a href="#" class="btn add-to-cart">
+                                            <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                                                width="32" height="32">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Карта товара -->
+                        <div class="col-lg-4 col-md-6 p-4">
+                            <div class="card border-primary rounded custom-shadow">
+                                <img src="../deps/images/goods/set of tea table and two chairs.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="#">
+                                        <p class="card-title">Чайный столик и два стула</p>
+                                    </a>
+                                    <p class="card-text text-truncate">Набор из стола и двух стульев в минималистическом стиле.</p>
+                                    <p class="product_id">id: 02265</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p><s>100</s> $</p>
+                                        <p><strong>90.00 $</strong></p>
+                                        <span class="badge bg-warning text-dark">Скидка 10.00 %</span>
+                                        <!-- <p><strong>100.00 $</strong></p> -->
+                                        <a href="#" class="btn add-to-cart">
+                                            <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                                                width="32" height="32">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Карта товара -->
+                        <div class="col-lg-4 col-md-6 p-4">
+                            <div class="card border-primary rounded custom-shadow">
+                                <img src="../deps/images/goods/double bed.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="#">
+                                        <p class="card-title">Двухспальная кровать</p>
+                                    </a>
+                                    <p class="card-text text-truncate">Кровать двухспальная с надголовником и вообще очень ортопедичная.</p>
+                                    <p class="product_id">id: 02265</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p><s>100</s> $</p>
+                                        <p><strong>90.00 $</strong></p>
+                                        <span class="badge bg-warning text-dark">Скидка 10.00 %</span>
+                                        <!-- <p><strong>100.00 $</strong></p> -->
+                                        <a href="#" class="btn">
+                                            <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                                                width="32" height="32">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Карта товара -->
+                        <div class="col-lg-4 col-md-6 p-4">
+                            <div class="card border-primary rounded custom-shadow">
+                                <img src="../deps/images/goods/kitchen table.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="#">
+                                        <p class="card-title">Кухонный стол с раковиной</p>
+                                    </a>
+                                    <p class="card-text text-truncate">Кухонныйй стол для обеда с встроенной раковиной и стульями.</p>
+                                    <p class="product_id">id: 02265</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p><s>100</s> $</p>
+                                        <p><strong>90.00 $</strong></p>
+                                        <span class="badge bg-warning text-dark">Скидка 10.00 %</span>
+                                        <!-- <p><strong>100.00 $</strong></p> -->
+                                        <a href="#" class="btn">
+                                            <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                                                width="32" height="32">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Карта товара -->
+                        <div class="col-lg-4 col-md-6 p-4">
+                            <div class="card border-primary rounded custom-shadow">
+                                <img src="../deps/images/goods/kitchen table 2.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="#">
+                                        <p class="card-title">Кухонный стол с встройкой</p>
+                                    </a>
+                                    <p class="card-text text-truncate">Кухонный стол со встроенной плитой и раковиной. Много полок и вообще красивый.</p>
+                                    <p class="product_id">id: 02265</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p><s>100</s> $</p>
+                                        <p><strong>90.00 $</strong></p>
+                                        <span class="badge bg-warning text-dark">Скидка 10.00 %</span>
+                                        <!-- <p><strong>100.00 $</strong></p> -->
+                                        <a href="#" class="btn">
+                                            <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                                                width="32" height="32">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Карта товара -->
+                        <div class="col-lg-4 col-md-6 p-4">
+                            <div class="card border-primary rounded custom-shadow">
+                                <img src="../deps/images/goods/corner sofa.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="#">
+                                        <p class="card-title">Угловой диван для гостинной</p>
+                                    </a>
+                                    <p class="card-text text-truncate">Угловой диван, раскладывается в двухспальную кровать, для гостинной и приема гостей самое то!</p>
+                                    <p class="product_id">id: 02265</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p><s>100</s> $</p>
+                                        <p><strong>90.00 $</strong></p>
+                                        <span class="badge bg-warning text-dark">Скидка 10.00 %</span>
+                                        <!-- <p><strong>100.00 $</strong></p> -->
+                                        <a href="#" class="btn">
+                                            <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                                                width="32" height="32">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Карта товара -->
+                        <div class="col-lg-4 col-md-6 p-4">
+                            <div class="card border-primary rounded custom-shadow">
+                                <img src="../deps/images/goods/bedside table.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="#">
+                                        <p class="card-title">Прикроватный столик</p>
+                                    </a>
+                                    <p class="card-text text-truncate">Прикроватный столик с двумявыдвижными ящиками (цветок не входит в комплект).</p>
+                                    <p class="product_id">id: 02265</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p><s>100</s> $</p>
+                                        <p><strong>90.00 $</strong></p>
+                                        <span class="badge bg-warning text-dark">Скидка 10.00 %</span>
+                                        <!-- <p><strong>100.00 $</strong></p> -->
+                                        <a href="#" class="btn">
+                                            <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                                                width="32" height="32">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Карта товара -->
+                        <div class="col-lg-4 col-md-6 p-4">
+                            <div class="card border-primary rounded custom-shadow">
+                                <img src="../deps/images/goods/sofa.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="#">
+                                        <p class="card-title">Диван обыкновенный</p>
+                                    </a>
+                                    <p class="card-text text-truncate">Диван, он же софа обыкновенная, ничего примечательного для описания.</p>
+                                    <p class="product_id">id: 02265</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p><s>100</s> $</p>
+                                        <p><strong>90.00 $</strong></p>
+                                        <span class="badge bg-warning text-dark">Скидка 10.00 %</span>
+                                        <!-- <p><strong>100.00 $</strong></p> -->
+                                        <a href="#" class="btn">
+                                            <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                                                width="32" height="32">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Карта товара -->
+                        <div class="col-lg-4 col-md-6 p-4">
+                            <div class="card border-primary rounded custom-shadow">
+                                <img src="../deps/images/goods/office chair.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="#">
+                                        <p class="card-title">Стул офисный</p>
+                                    </a>
+                                    <p class="card-text text-truncate">Описание товара, про то какой он классный, но это стул, что тут сказать...</p>
+                                    <p class="product_id">id: 02265</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p><s>100</s> $</p>
+                                        <p><strong>90.00 $</strong></p>
+                                        <span class="badge bg-warning text-dark">Скидка 10.00 %</span>
+                                        <!-- <p><strong>100.00 $</strong></p> -->
+                                        <a href="#" class="btn">
+                                            <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                                                width="32" height="32">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Карта товара -->
+                        <div class="col-lg-4 col-md-6 p-4">
+                            <div class="card border-primary rounded custom-shadow">
+                                <img src="../deps/images/goods/plants.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="#">
+                                        <p class="card-title">Растение</p>
+                                    </a>
+                                    <p class="card-text text-truncate">Растение для украшения вашего интерьера подарит свежесть и безмятежность обстановке.</p>
+                                    <p class="product_id">id: 02265</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p><s>100</s> $</p>
+                                        <p><strong>90.00 $</strong></p>
+                                        <span class="badge bg-warning text-dark">Скидка 10.00 %</span>
+                                        <!-- <p><strong>100.00 $</strong></p> -->
+                                        <a href="#" class="btn">
+                                            <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                                                width="32" height="32">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Карта товара -->
+                        <div class="col-lg-4 col-md-6 p-4">
+                            <div class="card border-primary rounded custom-shadow">
+                                <img src="../deps/images/goods/flower.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="#">
+                                        <p class="card-title">Цветок стилизированный</p>
+                                    </a>
+                                    <p class="card-text text-truncate">Дизайнерский цветок (возможно искусственный) для украшения интерьера.</p>
+                                    <p class="product_id">id: 02265</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p><s>100</s> $</p>
+                                        <p><strong>90.00 $</strong></p>
+                                        <span class="badge bg-warning text-dark">Скидка 10.00 %</span>
+                                        <!-- <p><strong>100.00 $</strong></p> -->
+                                        <a href="#" class="btn">
+                                            <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                                                width="32" height="32">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Карта товара -->
+                        <div class="col-lg-4 col-md-6 p-4">
+                            <div class="card border-primary rounded custom-shadow">
+                                <img src="../deps/images/goods/strange table.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="#">
+                                        <p class="card-title">Прикроватный столик</p>
+                                    </a>
+                                    <p class="card-text text-truncate">Столик, довольно странный на вид, но подходит для размещения рядом с кроватью.</p>
+                                    <p class="product_id">id: 02265</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p><s>100</s> $</p>
+                                        <p><strong>90.00 $</strong></p>
+                                        <span class="badge bg-warning text-dark">Скидка 10.00 %</span>
+                                        <!-- <p><strong>100.00 $</strong></p> -->
+                                        <a href="#" class="btn">
+                                            <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                                                width="32" height="32">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Пагинация -->
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center my-4">
+                            <div class="custom-shadow d-flex">
+                                <li class="page-item disabled">
+                                  <a class="page-link">Previous</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                  <a class="page-link" href="#">Next</a>
+                                </li>
+                            </div>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="py-4 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Home Python Hub Studio 2023</p>
+        </div>
+    </footer>
+    <script src="../deps/js/jquery/jquery-3.7.0.min.js"></script>
+    <script src="../deps/js/jquery-events.js"></script>
+    <script src="../deps/js/jquery-ajax.js"></script>
+    <script src="../deps/js/bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

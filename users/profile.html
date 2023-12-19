@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../deps/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../deps/css/my_css.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../deps/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../deps/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="f../iguration/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../deps/favicon/site.webmanifest">
+    <title>Профиль</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+            <div class="container">
+                <a class="navbar-brand" href="../index.html">Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Информация
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item  text-white" href="#">Доставка и оплата</a></li>
+                                <li><a class="dropdown-item  text-white" href="#">Контактная информация</a></li>
+                                <li><a class="dropdown-item  text-white" href="#">Про нас</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  text-white" href="../carts/cart.html">Корзина</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  text-white" href="../users/login.html">Войти</a>
+                        </li>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Мой профиль
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item  text-white" href="../carts/cart.html">Корзина</a></li>
+                                <li><a class="dropdown-item  text-white" href="../users/profile.html">Личный кабинет</a>
+                                </li>
+                                <li><a class="dropdown-item  text-white" href="#">Админ панель</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item  text-white" href="#">Выйти</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success text-white" type="submit">Поиск</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div class="container">
+            <!-- Каталог и корзина с фиксированным расположением на странице -->
+            <div class="row mt-1 position-fixed z-3">
+                <!-- Каталог -->
+                <div class="dropdown mb-2">
+                    <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Каталог
+                        <img class="mx-1" src="../deps/icons/grid-fill.svg" alt="Catalog Icon" width="16"
+                            height="16">
+                    </button>
+                    <ul class="dropdown-menu bg-dark" data-bs-theme="dark">
+                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Все товары</a></li>
+                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Кухня</a></li>
+                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Спальня</a></li>
+                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Гостинная</a></li>
+                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Офис</a></li>
+                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Фурнитура</a></li>
+                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Декор</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Контент -->
+        <div class="container">
+            <div class="row mt-1">
+                <div class="col-lg-2">
+                    <!-- Пустой блок на усмотрение -->
+                </div>
+                <div class="col-lg-10">
+                    <!-- Контент на странице -->
+                    <div class="row">
+                        <div class="container mt-5">
+                            <div class="row">
+                                <!-- Профиль с данными пользователя -->
+                                <div class="col-md-5">
+                                    <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
+                                        <h3 class="text-center mb-4">Профиль пользователя</h3>
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-md-12 mb-3 text-center">
+                                                    <img src="../deps/images/baseavatar.jpg"
+                                                        alt="Аватар пользователя" class="img-fluid rounded-circle"
+                                                        style="max-width: 150px;">
+                                                    <input type="file" class="form-control mt-3" id="avatar"
+                                                        accept="image/*">
+                                                </div>
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="firstName" class="form-label">Имя*</label>
+                                                    <input type="text" class="form-control" id="firstName"
+                                                        placeholder="Введите ваше имя" value="" required>
+                                                </div>
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="lastName" class="form-label">Фамилия*</label>
+                                                    <input type="text" class="form-control" id="lastName"
+                                                        placeholder="Введите вашу фамилию" value="" required>
+                                                </div>
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="username" class="form-label">Имя пользователя*</label>
+                                                    <input type="text" class="form-control" id="username"
+                                                        placeholder="Введите ваше имя пользователя" value="" required>
+                                                </div>
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="email" class="form-label">Email*</label>
+                                                    <input type="email" class="form-control" id="email"
+                                                        placeholder="Введите ваш email *youremail@example.com" value=""
+                                                        required>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-dark">Сохранить</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- Корзина -->
+                                <div class="col-md-7">
+                                    <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
+                                        <h3 class="text-center mb-4">Корзина</h3>
+                                        <div class="container" id="cart-items-container">
+                                            <!-- Разметка корзины -->
+                                            <div class="card mb-3 text-bg-light shadow-lg">
+                                                <div class="card-header">
+                                                    <h5 class="card-title">Товар</h5>
+                                                </div>
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item">
+                                                        <div class="row text-center">
+                                                            <div class="col p-0">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-btn">
+                                                                        <button type="button" class="btn btn-dark btn-sm decrement"
+                                                                            data-cart-id="" data-cart-change-url="">-</button>
+                                                                    </span>
+                                                                    <input type="text" class="form-control number" value="1"
+                                                                        readonly>
+                                                                    <span class="input-group-btn">
+                                                                        <button type="button" class="btn btn-dark btn-sm increment"
+                                                                            data-cart-id="" data-cart-change-url="">+</button>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col p-0">
+                                                                <p>x 100.00 = </p>
+                                                            </div>
+                                                            <div class="col p-0"><strong>100.00 $</strong></div>
+                                                            <div class="col p-0">
+                                                                <a href="#" class="remove-from-cart" data-cart-id="">
+                                                                    <img class="mx-1" src="../deps/icons/trash3-fill.svg"
+                                                                        alt="Catalog Icon" width="16" height="16">
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="card mb-3 shadow-lg">
+                                                <div class="card-footer">
+                                                    <p class="float-left">Итого <strong>1</strong> товар(а) на сумму</p>
+                                                    <h4 class="float-left"><strong>100.00 $</strong></h4>
+                                                </div>
+                                            </div>
+                                            <!-- Закончилась разметка корзины -->
+                                        </div>
+                                        <a class="btn btn-dark" href="../orders/create_order.html">
+                                            Оформить заказ
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- Оформленные заказы -->
+                                <div class="col-md-12">
+                                    <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
+                                        <h3 class="text-center mb-4">Мои заказы</h3>
+                                        <!-- Разметка заказов -->
+                                        <div class="container">
+                                            <div class="accordion" id="accordionExample">
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="heading1">
+                                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                                                            Заказ № 256 - 09 сентября 2023 9:04 | Статус:<strong class="mx-2"> В обработке</strong>
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionExample">
+                                                        <div class="accordion-body">
+                                                            <table class="table table-dark table-hover">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Товар</th>
+                                                                        <th>Количество</th>
+                                                                        <th>Цена</th>
+                                                                        <th>Общая стоимость</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td><a class="text-white" href="#">Комплект стол и три стула</a></td>
+                                                                        <td>1</td>
+                                                                        <td>255.00 $</td>
+                                                                        <td>255.00 $</td>
+                                                                        
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <div class="d-flex justify-content-between">
+                                                                <p><strong>Итого:</strong></p>
+                                                                <p><strong>255.00 $</strong></p>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="heading2">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                                            Заказ № 248 - 01 августа 2023 11:28 | Статус: <strong>Получен</strong>
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionExample">
+                                                        <div class="accordion-body">
+                                                            <table class="table table-dark table-hover">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Товар</th>
+                                                                        <th>Количество</th>
+                                                                        <th>Цена</th>
+                                                                        <th>Общая стоимость</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td><a class="text-white" href="#">Стул офисный</a></td>
+                                                                        <td>2</td>
+                                                                        <td>30.00 $</td>
+                                                                        <td>60.00 $</td>
+                                                                        
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Закончилась разметка заказов -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../deps/js/jquery/jquery-3.7.0.min.js"></script>
+    <script src="../deps/js/jquery-events.js"></script>
+    <script src="../deps/js/jquery-ajax.js"></script>
+    <script src="../deps/js/bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

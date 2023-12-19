@@ -1,0 +1,11 @@
+
+<!-- Фрагмент для вставки в block content для страницы about-->
+<!-- 
+Если добавите много текста для описния и footer будет "налазить" поверх текста,
+то уберите со страницы about вставку стиля для footer-a, и его отпустит"
+-->
+
+<div class="my-5 pt-5 px-2 pb-2 bg-white custom-shadow rounded">
+    <h2 class="m-2"><strong>О нас</strong></h2>
+    <p class="m-2" style="font-size: 1.2rem;">Текст о том какой классный этот интернет магазин.</p>
+</div>

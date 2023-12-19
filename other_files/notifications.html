@@ -1,0 +1,40 @@
+
+<!-- Для non_field_erors  -->
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="alert alert-danger alert-dismissible fade show custom-shadow" role="alert">
+                Текст ошибок
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Оповещения в формах -->
+<div class="alert alert-danger alert-dismissible fade show">Оишбка</div>
+
+<!-- Для оповещений -->
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == 'success' %}
+                    <div id="notification" class="position-fixed start-50 translate-middle-x z-3 alert alert-success fade show custom-shadow" role="alert">
+                        {{ message }}
+                    </div>
+                    {% endif %}
+                    {% if message.tags == 'warning' %}
+                    <div id="notification" class="position-fixed start-50 translate-middle-x z-3 alert alert-danger fade show custom-shadow" role="alert">
+                        {{ message }}
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+            <div id="jq-notification" class="position-fixed start-50 translate-middle-x z-3 alert alert-success fade show custom-shadow" style="display: none;" role="alert">
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

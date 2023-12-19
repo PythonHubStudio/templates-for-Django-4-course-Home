@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'deps/css/my_footer_css.css' %}">
+{% endblock css %}
+
+{% block cart_button %}
+{% include 'includes/cart_button.html' %}
+{% endblock cart_button %}
+
+
+{% block content %}
+<h1 class="mt-4 shadow"><strong>ОП, СТРАНИЦА НЕ НАЙДЕНА!</strong></h1>
+{% endblock content %}
+
+{% block footer %}
+<footer class="py-4 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Home Python Hub Studio 2023</p>
+    </div>
+</footer>
+{% endblock footer %}
